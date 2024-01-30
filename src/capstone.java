@@ -1,44 +1,41 @@
-import java.util.Scanner;
-
-
-
 public class capstone {
     public static void main(String[] args) {
-        Scanner myScanner = new Scanner(System.in);
+        if (args.length != 5) {
+            System.out.println("5 argumentos");
+            return;
+        }else{
+            System.out.println("pase 5 argumentos mano");
+        }
 
-        System.out.print("Ingresa filas: ");
-        int filas = myScanner.nextInt();
+        int w = Integer.parseInt(args[0]);
+        int h = Integer.parseInt(args[1]);
+        int g = Integer.parseInt(args[2]);
+        int s = Integer.parseInt(args[3]);
+        String p = args[4];
 
-        System.out.print("Ingresa columnas: ");
-        int columnas = myScanner.nextInt();
+        if (!(w == 10 || w == 20 || w == 30 || w == 80) || !(h == 10 || h == 20 || h == 40) || g <= 0 || !(s == 250 || s == 1000)) {
+            System.out.println("no válidos.");
+            return;
+        }
 
-        int[][] tablero = new int[filas][columnas];
+        imprimirUbicacionCelulas(w, h, p);
+    }
 
-        System.out.print("Ingresa el número de celulas vivas porfavor: ");
-        int numCelulasVivas = myScanner.nextInt();
+    private static void imprimirUbicacionCelulas(int w, int h, String p) {
+        char[][] tablero = new char[h][w];
+        String[] filas = p.split("#");
 
-        for (int i = 0; i < numCelulasVivas; i++) {
-            System.out.print("Ingresa la fila de la celula " + (i + 1) + ": ");
-            int fila = myScanner.nextInt();
-
-            System.out.print("Ingresa la columna de la celula " + (i + 1) + ": ");
-            int columna = myScanner.nextInt();
-
-            if (fila >= 0 && fila < filas && columna >= 0 && columna < columnas) {
-                tablero[fila][columna] = 1;
-            } else {
-                System.out.println("esa ubicacion no existe");
-                i--;
+        for (int i = 0; i < h && i < filas.length; i++) {
+            char[] filaChars = filas[i].toCharArray();
+            for (int j = 0; j < w && j < filaChars.length; j++) {
+                tablero[i][j] = filaChars[j];
             }
         }
 
-        imprimirTablero(tablero);
-    }
-
-    private static void imprimirTablero(int[][] tablero) {
-        for (int i = 0; i < tablero.length; i++) {
-            for (int j = 0; j < tablero[i].length; j++) {
-                System.out.print(tablero[i][j] == 1 ? "{X}" : "{}");
+        System.out.println("ubicar celula:");
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                System.out.print(tablero[i][j]);
             }
             System.out.println();
         }
