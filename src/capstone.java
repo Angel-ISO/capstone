@@ -18,10 +18,10 @@ public class capstone {
             return;
         }
 
-        imprimirUbicacionCelulas(w, h, p);
+        celulaLugar(w, h, p);
     }
 
-    private static void imprimirUbicacionCelulas(int w, int h, String p) {
+    private static void celulaLugar(int w, int h, String p) {
         char[][] tablero = new char[h][w];
         String[] filas = p.split("#");
 
