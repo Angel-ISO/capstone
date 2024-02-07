@@ -1,10 +1,10 @@
 public class capstone {
     public static void main(String[] args) {
         if (args.length != 5) {
-            System.out.println("5 argumentos mano.");
+            System.out.println(" 5 argumentos mano.");
             return;
         } else {
-            System.out.println("argumentos correctos.");
+            System.out.println("Ha ingresado correctamente los 5 argumentos.");
         }
 
         int w = Integer.parseInt(args[0]);
@@ -18,7 +18,7 @@ public class capstone {
             return;
         }
 
-        System.out.println("los argumentos fueron \t:" + w + "\t" + h+"\t"+ g +"\t" +s + "\t" +p  );
+        System.out.println("los argumentos fueron : \t" + w + "\t" + h+"\t"+ g +"\t" +s + "\t" +p  );
     }
 
     private static boolean validarArgumentos(int w, int h, int g, int s) {
