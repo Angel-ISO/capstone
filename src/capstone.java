@@ -1,10 +1,10 @@
 public class capstone {
     public static void main(String[] args) {
         if (args.length != 5) {
-            System.out.println("5 argumentos");
+            System.out.println("5 argumentos mano.");
             return;
-        }else{
-            System.out.println("pase 5 argumentos mano");
+        } else {
+            System.out.println("argumentos correctos.");
         }
 
         int w = Integer.parseInt(args[0]);
@@ -13,31 +13,18 @@ public class capstone {
         int s = Integer.parseInt(args[3]);
         String p = args[4];
 
-        if (!(w == 10 || w == 20 || w == 30 || w == 80) || !(h == 10 || h == 20 || h == 40) || g <= 0 || !(s == 250 || s == 1000)) {
-            System.out.println("no válidos.");
+        if (!validarArgumentos(w, h, g, s)) {
+            System.out.println("no validos.");
             return;
         }
 
-        imprimirUbicacionCelulas(w, h, p);
+        System.out.println("los argumentos fueron \t:" + w + "\t" + h+"\t"+ g +"\t" +s + "\t" +p  );
     }
 
-    private static void imprimirUbicacionCelulas(int w, int h, String p) {
-        char[][] tablero = new char[h][w];
-        String[] filas = p.split("#");
-
-        for (int i = 0; i < h && i < filas.length; i++) {
-            char[] filaChars = filas[i].toCharArray();
-            for (int j = 0; j < w && j < filaChars.length; j++) {
-                tablero[i][j] = filaChars[j];
-            }
-        }
-
-        System.out.println("ubicar celula:");
-        for (int i = 0; i < h; i++) {
-            for (int j = 0; j < w; j++) {
-                System.out.print(tablero[i][j]);
-            }
-            System.out.println();
-        }
+    private static boolean validarArgumentos(int w, int h, int g, int s) {
+        boolean medidas = (w == 10 || w == 20 || w == 30 || w == 80) && (h == 10 || h == 20 || h == 40);
+        boolean generaciones = g > 0;
+        boolean pausas = s == 250 || s == 1000;
+        return medidas && generaciones && pausas;
     }
 }
